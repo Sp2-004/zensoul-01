@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #dbeafe 0%, #fbcfe8 100%);
+  transition: background 1.2s;
+}
+
+/* Glassmorphism card for main content */
+.main-content,
+.AnxietyGuide,
+.App-header {
+  background: rgba(40, 44, 52, 0.76);
+  min-height: 70vh;
+  box-shadow: 0 8px 32px 0 rgba(120, 120, 180, 0.12);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(12px + 2vmin);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  transition: background 1.2s;
+}
+
+/* Floating shapes behind everything */
+.pointer-events-none {
+  pointer-events: none;
+}
+
+/* Breathing circle animation */
+@keyframes glowPulse {
+  0%   { opacity: 0.66; box-shadow: 0 0 0 0 #a7f3d044, 0 0 60px 10px #a7f3d055, 0 0 120px 60px #a7f3d022;}
+  50%  { opacity: 0.93; box-shadow: 0 0 0 10px #a7f3d099, 0 0 80px 40px #a7f3d099, 0 0 220px 120px #a7f3d033;}
+  100% { opacity: 0.66; box-shadow: 0 0 0 0 #a7f3d044, 0 0 60px 10px #a7f3d055, 0 0 120px 60px #a7f3d022;}
+}
+
+@keyframes floatNumber {
+  0%   { transform: translateY(16px) scale(0.98);}
+  50%  { transform: translateY(-6px) scale(1.08);}
+  100% { transform: translateY(0) scale(1);}
+}
+.animate-floatNumber { animation: floatNumber 0.7s cubic-bezier(0.6,0,0.4,1); }
+
+/* Button styles */
+button,
+[type="button"] {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+button:focus-visible,
+[type="button"]:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+/* Chat bubble animation */
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translate3d(0,0,0);
+  }
+  40%, 43% {
+    transform: translate3d(0, -8px, 0);
+  }
+  70% {
+    transform: translate3d(0, -4px, 0);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+.chat-bubble {
+  animation: bounce 2s infinite;
+}
+
+.chat-bubble:hover {
+  animation: none;
+  transform: scale(1.05);
+}
+
+/* Typing indicator */
+@keyframes typing {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-10px);
+  }
+}
+
+.typing-dot {
+  animation: typing 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+.typing-dot:nth-child(3) { animation-delay: 0s; }
